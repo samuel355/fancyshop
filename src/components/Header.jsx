@@ -14,7 +14,7 @@ const Header = () => {
 
     const login = async () =>{
         const response = await signInWithPopup(firebaseAuth, provider)
-        console.log(response)
+        console.log(response);
     }
  
   return (
