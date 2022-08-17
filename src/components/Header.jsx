@@ -3,7 +3,7 @@ import Logo from './images/logo.png'
 import Avatar from './images/avatar.png'
 import {MdShoppingBasket} from 'react-icons/md'
 
-export const Header = () => {
+const Header = () => {
   return (
     <header className='fixed z-50 w-screen  p-6 px-16'>
         {/** Desktop and Tablet  */}
@@ -40,3 +40,5 @@ export const Header = () => {
     </header>
   )
 }
+
+export default Header
