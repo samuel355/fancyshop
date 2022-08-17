@@ -5,7 +5,18 @@ import {MdShoppingBasket} from 'react-icons/md'
 import {motion} from 'framer-motion'
 import {Link} from 'react-router-dom'
 
+import {getAuth, signInWithPopup, GoogleAuthProvider} from 'firebase/auth'
+import {app} from '../firebase.config'
+
 const Header = () => {
+    const firebaseAuth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    const login = async () =>{
+        const response = await signInWithPopup(firebaseAuth, provider)
+        console.log(response)
+    }
+ 
   return (
     <header className='fixed z-50 w-screen  p-6 px-16'>
         {/** Desktop and Tablet  */}
@@ -31,7 +42,15 @@ const Header = () => {
                     </div>
                 </div>
 
-                <motion.img whileTap={{scale : 0.6}} className='w-8 h-8 cursor-pointer min-w-[40px] min-h-[40px] shadow-sm' src={Avatar} alt="User Profile" />
+                <div className='relative'>
+                    <motion.img 
+                        onClick={login}
+                        whileTap={{scale : 0.6}} 
+                        className='w-8 h-8 cursor-pointer min-w-[40px] min-h-[40px] shadow-sm' 
+                        src={Avatar} alt="User Profile" 
+                    />
+                </div>
+                
             </div>
         </div>
 
