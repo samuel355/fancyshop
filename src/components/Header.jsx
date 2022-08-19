@@ -17,15 +17,19 @@ const Header = () => {
     const [user, dispatch] = useStateValue();
 
     const login = async () =>{
-        const {
-            user: {refreshToken, providerData}, 
-        } = await signInWithPopup(firebaseAuth, provider);
-
-        dispatch({
-            type: actionType.SET_USER,
-            user: providerData[0],
-        });
-        localStorage.setItem("user", JSON.stringify(providerData[0]));
+        if(!user){
+            const {
+                user: {refreshToken, providerData}, 
+            } = await signInWithPopup(firebaseAuth, provider);
+    
+            dispatch({
+                type: actionType.SET_USER,
+                user: providerData[0],
+            });
+            localStorage.setItem('user', JSON.stringify(providerData[0]));
+        }else{
+            alert('User already exist logout')
+        }
         
     }
  
@@ -57,10 +61,15 @@ const Header = () => {
                 <div className='relative'>
                     <motion.img 
                         whileTap={{scale : 0.6}} 
-                        className='w-8 h-8 cursor-pointer min-w-[40px] min-h-[40px] shadow-sm' 
-                        src={Avatar} alt="User Profile" 
+                        className='w-8 h-8 cursor-pointer min-w-[40px] min-h-[40px] shadow-sm rounded-full' 
+                        src={user ? user.photoURL : Avatar} 
+                        alt="User Profile" 
                         onClick={login}
                     />
+                    <div className="flex flex-col w-40 bg-gray-50 shadow-xl rounded-lg absolute top-12 right-0 px-5 py-2">
+                        <p>New Item</p>
+                        <p>Logout</p>
+                    </div>
                 </div>
                 
             </div>
