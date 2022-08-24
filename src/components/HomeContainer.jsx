@@ -23,11 +23,11 @@ const HomeContainer = () => {
             <div className='w-full h-full absolute top-0 left-0 flex items-center justify-center px-32 py-4'>
                 {
                     heroData && heroData.map(staticData =>(
-                        <div key={staticData.id} className='w-190 p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col items-center justify-center'>
+                        <div key={staticData.id} className='w-150 p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col items-center justify-center min-w-[190px] gap-1 shadow-xl m-1'>
                             <img className='w-40 -mt-20' src={staticData.imageSrc} alt="Ice Cream" />
-                            <p className='mt-2 text-lg font-semibold text-textColor'>Icecream</p>
-                            <p className='mt-1 text-center text-sm text-gray-500'>Chocolate & Vanila flavor</p>
-                            <p className='mt-2 text-sm font-semibold text-headingColor'><span className='text-md text-orange-600 font-bold'>$ </span> 15.99</p>
+                            <p className='mt-2 text-lg font-semibold text-textColor'>{staticData.name}</p>
+                            <p className='mt-1 text-center text-sm text-gray-500'>{staticData.description}</p>
+                            <p className='mt-2 text-sm font-semibold text-headingColor'><span className='text-md text-orange-600 font-bold'>$ </span> {staticData.price}</p>
                         </div>
                     ))
                 }
