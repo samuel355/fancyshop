@@ -30,9 +30,10 @@ module.exports = {
         350: "350px",
         375: "375px",
         460: "460px",
-        456: "656px",
+        600: "600px",
+        650: "650px",
+        700: "700px",
         880: "880px",
-        508: "508px",
         "90vh": "90vh",
       },
       minWidth: {
@@ -51,7 +52,8 @@ module.exports = {
         headingColor: "#2e2e2e",
         textColor: "#515151",
         cartNumbg: "#e80013",
-        primary: "#f5f3f3"
+        primary: "#f5f3f3",
+        cardOverlay: "rgba(256, 256, 256, 0.4)",
       }
     }
   },
