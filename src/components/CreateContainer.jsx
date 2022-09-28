@@ -1,17 +1,25 @@
 import React, {useState} from 'react'
 import {motion} from 'framer-motion'
-import {MdFastfood} from 'react-icons/md'
+import {MdFastfood, MdCloudUpload} from 'react-icons/md'
 import {categories} from '../utils/data'
+import Loader from './Loader'
+
 const CreateContainer = () => {
 
     const [title, setTitle] = useState("")
     const [calories, setCalories] = useState("")
     const [ price, setPrice] = useState("")
-    const [imageAsset, setImageAsset] = useState(null)
+    const [imageAsset, setImageAsset] = useState(null) //from firebase image upload
     const [alertStatus, setAlertStatus] = useState("danger")
     const [category, setCategory] = useState(null)
     const [fields, setFields] = useState(false) //for error checking of input fields
     const [msg, setMsg] = useState(null) // alert message
+    const [isLoading, setIsLoading] = useState(false) //
+
+
+    const uploadImage =  () => {
+
+    }
 
     return (
         <div className='flex items-center justify-center'>
@@ -51,7 +59,38 @@ const CreateContainer = () => {
                 </div>
 
                 <div className='group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-420 cursor-pointer rounded-lg'>
-                    
+                    {
+                        isLoading ? 
+                        <Loader /> 
+                        : 
+                        <> 
+                            {
+                               !imageAsset ? 
+                               <> 
+                                    <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer">
+                                        <div className="w-full h-full flex flex-col items-center justify-center">
+                                            <MdCloudUpload className="text-gray-500 group-hover:text-gray-700 text-3xl" />
+                                            <p className="text-gray-500 group-hover:text-gray-700">
+                                                Click here to upload
+                                            </p>
+                                        </div>
+
+                                        <input
+                                            type="file"
+                                            name="upload-image"
+                                            accept="image/*"
+                                            onChange={uploadImage}
+                                            className="w-0 h-0"
+                                        />
+                                    </label>
+                               </> 
+                               : 
+                               <> 
+                               
+                               </>
+                            }
+                        </>
+                    }
                 </div>
             </div>
         </div>
