@@ -37,6 +37,7 @@ const CreateContainer = () => {
         //success upload
         uploadTask.on('state_change', (snapshot) => {
             const uploadProgress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            console.log(uploadProgress)
         }, (error) => {
             console.log('error uploading image - ' + error)
             setFields(true)
