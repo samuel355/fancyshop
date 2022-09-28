@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {motion} from 'framer-motion'
-import {MdFastfood, MdCloudUpload, MdDelete, MdFoodBank} from 'react-icons/md'
+import {MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdAttachMoney} from 'react-icons/md'
 import {categories} from '../utils/data'
 import Loader from './Loader'
 
@@ -24,6 +24,10 @@ const CreateContainer = () => {
     const deleteImage = () => {
 
     }
+    const saveDetails = () => {
+
+    }
+
     return (
         <div className='flex items-center justify-center'>
             <div className="w-[80%] flex flex-col items-center justify-center p-2 border border-gray-300 rounded-lg gap-4">
@@ -112,6 +116,26 @@ const CreateContainer = () => {
                             onChange ={(e) => setCalories(e.target.value)}
                         />
                     </div>
+
+                    <div className='w-full py-2 border-b border-x-gray-300 items-center flex gap-2'>
+                        <MdAttachMoney className='text-gray-700 text-2xl ' />
+                        <input 
+                            className='w-full h-full text-lg bg-transparent font-semibold outline-none border-none placeholder:text-gray-300 text-textColor'
+                            type="text" 
+                            placeholder='Price' 
+                            required value={price} 
+                            onChange ={(e) => setPrice(e.target.value)}
+                        />
+                    </div>
+                </div>
+                <div className='flex flex-col mt-5 mb-2 w-full'>
+                    <button 
+                        onClick={saveDetails} 
+                        type='button' 
+                        className='ml-0 md:m-auto w-full md:w-auto border-none outline-none bg-emerald-400 px-12 py-2 rounded-lg text-lg text-white font-semibold'
+                    >
+                        Save Details
+                    </button>
                 </div>
             </div>
         </div>
