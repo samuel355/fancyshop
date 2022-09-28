@@ -3,8 +3,9 @@ import {motion} from 'framer-motion'
 import {MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdAttachMoney} from 'react-icons/md'
 import {categories} from '../utils/data'
 import Loader from './Loader'
-import {ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage'
 import { storage } from '../firebase.config'
+import {ref, uploadBytesResumable, getDownloadURL, deleteObject} from 'firebase/storage'
+
 
 const CreateContainer = () => {
 
@@ -62,8 +63,19 @@ const CreateContainer = () => {
     }
 
     const deleteImage = () => {
-
+        setIsLoading(true)
+        const deleteRef = ref(storage, imageAsset);
+        deleteObject(deleteRef).then( () => {
+            setImageAsset(null)
+            setIsLoading(false)
+            setMsg('Image Deleted')
+            setAlertStatus('success')
+            setTimeout(() => {
+                setFields(false)
+            }, 5000)
+        })
     }
+
     const saveDetails = () => {
 
     }
