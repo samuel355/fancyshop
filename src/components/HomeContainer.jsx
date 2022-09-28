@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react'
+import {motion} from 'framer-motion'
 import { useStateValue } from '../context/StateProvider'
 import { heroData } from '../utils/data'
 import { getAllFoodItems } from '../utils/firebaseFunctions'
 import Delivery from './images/delivery.png'
 import HeroImage from './images/heroBg.png'
 import { actionType } from '../context/reducer'
+
 
 const HomeContainer = () => {
 
@@ -33,7 +35,7 @@ const HomeContainer = () => {
             </div>
             <p className='text-[2.5rem] md:text-[3.5rem] font-bold tracking-wide text-headingColor'>The fastest Delivery in <span className='text-orange-600 text[3rem]'>Your City</span></p>
             <p className='text-base text-textColor md:text-[1.2rem] md:text-left'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus beatae aliquam consectetur dignissimos quaerat impedit distinctio. Quasi velit nihil magnam distinctio iste temporibus alias quis, architecto ratione possimus, aliquam voluptate?</p>
-            <button className='bg-gradient-to-br from-orange-600 to-orange-500 px-6 py-2 rounded-full text-white font-semibold w-full hover:shadow-lg transition-all ease-in-out duration-100 md:w-60' type='button'> Order Now</button>
+            <motion.button whileTap={{scale : 0.85}} className='bg-gradient-to-br from-orange-600 to-orange-500 px-6 py-2 rounded-full text-white font-semibold w-full hover:shadow-lg transition-all ease-in-out duration-100 md:w-60' type='button'> Order Now</motion.button>
         </div>
 
         <div className='py-2 flex-1 flex items-center relative'>
