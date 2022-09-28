@@ -1,11 +1,28 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import { useStateValue } from '../context/StateProvider'
 import { heroData } from '../utils/data'
+import { getAllFoodItems } from '../utils/firebaseFunctions'
 import Delivery from './images/delivery.png'
 import HeroImage from './images/heroBg.png'
-
+import { actionType } from '../context/reducer'
 
 const HomeContainer = () => {
-  return (
+
+    const [{}, dispatch] = useStateValue()
+    const fetchData = async () => {
+        await getAllFoodItems().then(data => {
+            dispatch({
+                type: actionType.SET_FOOD_ITEMS,
+                foodItems: data
+            })
+        })
+    };
+
+    useEffect(()=> {
+        fetchData()
+    }, []);
+
+    return (
     <section className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full' id='home'>
         <div className='py-2 flex-1 flex flex-col items-start justify-center  gap-6'>
             <div className='flex items-center gap-2 justify-center bg-orange-100 p-2 rounded-full shadow-sm'>

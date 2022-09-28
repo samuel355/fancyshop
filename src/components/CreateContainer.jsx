@@ -5,7 +5,9 @@ import {categories} from '../utils/data'
 import Loader from './Loader'
 import { storage } from '../firebase.config'
 import {ref, uploadBytesResumable, getDownloadURL, deleteObject} from 'firebase/storage'
-import { saveItem } from '../utils/firebaseFunctions'
+import { getAllFoodItems, saveItem } from '../utils/firebaseFunctions'
+import { useStateValue } from '../context/StateProvider'
+import { actionType } from '../context/reducer'
 
 
 const CreateContainer = () => {
@@ -19,6 +21,16 @@ const CreateContainer = () => {
     const [fields, setFields] = useState(false) //for error checking of input fields
     const [msg, setMsg] = useState(null) // alert message
     const [isLoading, setIsLoading] = useState(false) //
+
+    const [{}, dispatch] = useStateValue()
+    const fetchData = async () => {
+        await getAllFoodItems().then(data => {
+            dispatch({
+                type: actionType.SET_FOOD_ITEMS,
+                foodItems: data
+            })
+        })
+    };
 
 
     const uploadImage =  (e) => {
@@ -125,6 +137,8 @@ const CreateContainer = () => {
                 setTimeout(() => {
                     setFields(false)
                 }, 5000)
+
+                fetchData()
             }
         } catch(error){
             setFields(true);
