@@ -9,3 +9,61 @@ export const heroData = [
     {id: 3, name: 'Fish Kebab', description: 'Fish', price: 7.99, imageSrc: Fi1},
     {id: 4, name: 'Fish Kebab', description: 'Fish', price: 7.99, imageSrc: C1},
 ];
+
+export const categories = [
+    {
+      id: 1,
+      name: "Chicken",
+      urlParamName: "chicken",
+    },
+    {
+      id: 2,
+      name: "Beef",
+      urlParamName: "beef",
+    },
+    {
+      id: 3,
+      name: "Mutton",
+      urlParamName: "mutton",
+    },
+    {
+      id: 4,
+      name: "Fish",
+      urlParamName: "fish",
+    },
+    {
+      id: 5,
+      name: "Pizza",
+      urlParamName: "pizza",
+    },
+    {
+      id: 6,
+      name: "Snack",
+      urlParamName: "snacks",
+    },
+    {
+      id: 7,
+      name: "Deserts",
+      urlParamName: "deserts",
+    },
+    {
+      id: 8,
+      name: "Soft Drinks",
+      urlParamName: "drinks",
+    },
+    {
+        id: 9,
+        name: "Fruits",
+        urlParamName: "fruits",
+    },
+    {
+        id: 10,
+        name: "Ice Creams",
+        urlParamName: "ice_creams",
+    },
+    {
+        id: 11,
+        name: "Curry",
+        urlParamName: "curry",
+    },
+];
