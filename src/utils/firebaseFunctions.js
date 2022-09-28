@@ -1,4 +1,4 @@
-import { doc, setDoc } from "firebase/firestore"
+import { doc, getDocs, setDoc, query, collection, orderBy } from "firebase/firestore"
 import {firestore} from '../firebase.config'
 
 //Saving new item
@@ -8,4 +8,13 @@ export const saveItem = async (data) =>{
             merge: true
         }
     )
+}
+
+//fetch all items
+export const fetchFoodItems = async () =>{
+    const items = await getDocs(
+        query(collection(firestore, 'foodItems'), orderBy('id', 'desc'))
+    );
+
+    return items.docs.map((doc) => doc.data())
 }
