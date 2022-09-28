@@ -14,8 +14,8 @@ const CreateContainer = () => {
     const [msg, setMsg] = useState(null) // alert message
 
     return (
-        <div className='flex flex-col items-center justify-center'>
-            <div className="w-[80%] flex flex-col items-center justify-center p-2 border gap-4 border-gray-300 rounded-lg">
+        <div className='flex items-center justify-center'>
+            <div className="w-[80%] flex flex-col items-center justify-center p-2 border border-gray-300 rounded-lg gap-4">
                 {
                     fields && (
                         <motion.p 
@@ -48,6 +48,10 @@ const CreateContainer = () => {
                             ))
                         }
                     </select>
+                </div>
+
+                <div className='group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-420 cursor-pointer rounded-lg'>
+                    
                 </div>
             </div>
         </div>
