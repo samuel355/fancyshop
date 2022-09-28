@@ -5,6 +5,7 @@ import {categories} from '../utils/data'
 import Loader from './Loader'
 import { storage } from '../firebase.config'
 import {ref, uploadBytesResumable, getDownloadURL, deleteObject} from 'firebase/storage'
+import { saveItem } from '../utils/firebaseFunctions'
 
 
 const CreateContainer = () => {
@@ -74,10 +75,65 @@ const CreateContainer = () => {
                 setFields(false)
             }, 5000)
         })
+        .catch((error) => {
+            setFields(true);
+            setMsg("Error while deleting : Try again 🙇");
+            setAlertStatus("danger");
+            setTimeout(() => {
+              setFields(false);
+              setIsLoading(false);
+            }, 4000);
+        });
+    }
+
+    const clearDataFields = () => {
+        setTitle('');
+        setImageAsset(null);
+        setCalories("")
+        setPrice("")
+        setCategory("Select Category")
     }
 
     const saveDetails = () => {
-
+        setIsLoading(true)
+        try{
+            if(!title || !calories || !imageAsset || !price || !price || !category){
+                setFields(true);
+                setMsg("Fill all fields correctly 🙇");
+                setAlertStatus("danger");
+                setTimeout(() => {
+                setFields(false);
+                setIsLoading(false);
+                }, 5000);
+            }else{
+                const data = {
+                    id: `${Date.now()}_${title}`,
+                    title: title,
+                    calories: calories,
+                    price: price,
+                    category: category,
+                    imageURL: imageAsset,
+                    qty: 1,
+                }
+                saveItem(data);
+                setIsLoading(false)
+                setFields(true)
+                setMsg('Data Saved Successfully')
+                setAlertStatus('success')
+                clearDataFields();
+                setTimeout(() => {
+                    setFields(false)
+                }, 5000)
+            }
+        } catch(error){
+            setFields(true);
+            setMsg("Error while Uploading : Try again 🙇");
+            setAlertStatus("danger");
+            setTimeout(() => {
+              setFields(false);
+              setIsLoading(false);
+            }, 5000);
+        };
     }
 
     return (
