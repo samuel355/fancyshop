@@ -47,7 +47,7 @@ const Header = () => {
     }
 
   return (
-    <header className='fixed z-50 w-screen  p-6 px-8 md:p-6 md:px-16'>
+    <header className='fixed z-50 w-screen bg-cardOverlay p-6 px-8 md:p-6 md:px-16'>
         {/** Desktop and Tablet  */}
         <div className='hidden md:flex w-full h-full justify-between'>
             <Link to={'/'} className='flex items-center gap-2'>

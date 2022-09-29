@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { MdShoppingBasket } from 'react-icons/md'
 import {motion} from 'framer-motion'
 import { useRef } from 'react'
+import NotFound from './images/NotFound.svg'
 
 const RowContainer = ({flag, data, scrollValue}) => {
     
@@ -19,7 +20,7 @@ const RowContainer = ({flag, data, scrollValue}) => {
                 : 'overflow-x-hidden flex-wrap justify-center'
             } `}>
             {
-                data && data.map((item) => (
+                data && data.length > 0 ? data.map((item) => (
                     <div key={item.id} className='w-300 min-w-[300px] md:min-w-[340px] mx-3 md:w-340 h-auto rounded-lg p-2  my-3 bg-cardOverlay shadow-sm backdrop-blur-lg hover:drop-shadow-lg'>
                         <div className='w-full flex items-center justify-between'>
                             <motion.img whileHover={{scale: 1.2}} className='w-40 h-40 -mt-4 drop-shadow-2xl object-contain' src={item?.imageURL} alt={item?.title} />
@@ -37,7 +38,12 @@ const RowContainer = ({flag, data, scrollValue}) => {
                             </div>
                         </div>
                     </div> 
-                ))
+                )) : (
+                    <div className='w-full flex-col flex items-center justify-center'>
+                        <img className='w-40 h-40' src={NotFound} alt="" />
+                        <p className='mb-5 mt-3 text-xl font-semibold capitalize '>No Food found for this menu </p>
+                    </div>
+                )
             }
         </div>
     )
