@@ -30,6 +30,7 @@ module.exports = {
         340: "340px",
         350: "350px",
         375: "375px",
+        400: "400px",
         460: "460px",
         600: "600px",
         650: "650px",
@@ -57,6 +58,9 @@ module.exports = {
         lighttextGray: '#9ca0ab',
         cardOverlay: "rgba(256, 256, 256, 0.4)",
         bgCard: "rgba(256, 256, 256, 0.8)",
+        cartBg: "#282a2c",
+        cartItem: "#2e3033",
+        cartTotal: "#343739"
       }
     }
   },
