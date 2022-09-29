@@ -53,7 +53,9 @@ module.exports = {
         textColor: "#515151",
         cartNumbg: "#e80013",
         primary: "#f5f3f3",
+        lighttextGray: '#9ca0ab',
         cardOverlay: "rgba(256, 256, 256, 0.4)",
+        bgCard: "rgba(256, 256, 256, 0.8)",
       }
     }
   },
