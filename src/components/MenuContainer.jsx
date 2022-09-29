@@ -18,7 +18,7 @@ const MenuContainer = () => {
     return (
         <section className='w-full' id='menu'>
             <div className='w-full flex flex-col items-center justify-center'>
-                <p className='text-2xl font-semibold  text-headingColor relative before:absolute before:rounded-lg before:w-24 before:h-1 before:-bottom-3 before:left-0 mr-auto before:bg-gradient-to-tr from-orange-300 to-orange-700 transition-all ease-in-out duration-100'> Our Hot Dishes</p>
+                <p className='text-2xl font-semibold  text-headingColor relative before:absolute before:rounded-lg before:w-24 before:h-1 before:-bottom-3 before:left-0 mr-auto before:bg-gradient-to-tr from-orange-300 to-orange-700 transition-all ease-in-out duration-100'> Our Menu </p>
             </div>
 
             <div className='w-full px-3 flex items-center justify-start lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none'>
