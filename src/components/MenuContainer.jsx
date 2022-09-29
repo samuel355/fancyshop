@@ -1,10 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {IoFastFood} from 'react-icons/io5'
 import { categories } from '../utils/data'
+import {motion} from 'framer-motion'
 
 const MenuContainer = () => {
 
     const [filter, setFilter] = useState("Chicken")
+
+    useEffect( () => {
+
+    },[filter])
+
     return (
         <section className='w-full' id='menu'>
             <div className='w-full flex flex-col items-center justify-center'>
@@ -14,12 +20,12 @@ const MenuContainer = () => {
             <div className='w-full px-3 flex items-center justify-start lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none'>
                 {
                     categories && categories.map((item)=>(
-                        <div key={item.id} className={`group ${filter === item.name ? 'bg-red-600' : 'bg-bgCard'} w-24 min-w-[94px] h-28 cursor-pointer hover:bg-red-600 rounded-lg drop-shadow-xl flex flex-col gap-3 items-center justify-center duration-150 transition-all ease-in-out`}>
+                        <motion.div whileTap={{scale : 0.85}} onClick={() => setFilter(item.name)} key={item.id} className={`group ${filter === item.name ? 'bg-red-600' : 'bg-bgCard'} w-24 min-w-[94px] h-28 cursor-pointer hover:bg-red-600 rounded-lg drop-shadow-xl flex flex-col gap-3 items-center justify-center duration-150 transition-all ease-in-out`}>
                             <div className={`w-10 h-10 ${filter === item.name ? 'bg-white' : 'bg-red-600'} rounded-full group-hover:bg-bgCard flex items-center justify-center hover:bg-red-500`}>
                                 <IoFastFood className={`text-lg  ${filter === item.name ? 'text-textColor': 'text-red-100'} group-hover:text-textColor`} />
                             </div>
                             <p className={`text-sm ${filter === item.name ? 'text-white' : 'text-textColor'} group-hover:text-red-100`}>{item.name}</p>
-                        </div>
+                        </motion.div>
                     ))
                 }
             </div>
