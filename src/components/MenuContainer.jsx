@@ -15,8 +15,8 @@ const MenuContainer = () => {
                 {
                     categories && categories.map((item)=>(
                         <div key={item.id} className={`group ${filter === item.name ? 'bg-red-600' : 'bg-bgCard'} w-24 min-w-[94px] h-28 cursor-pointer hover:bg-red-600 rounded-lg drop-shadow-xl flex flex-col gap-3 items-center justify-center duration-150 transition-all ease-in-out`}>
-                            <div className='w-10 h-10 rounded-full bg-red-600 group-hover:bg-bgCard flex items-center justify-center hover:bg-red-500'>
-                                <IoFastFood className='text-lg text-red-100 group-hover:text-textColor' />
+                            <div className={`w-10 h-10 ${filter === item.name ? 'bg-white' : 'bg-red-600'} rounded-full group-hover:bg-bgCard flex items-center justify-center hover:bg-red-500`}>
+                                <IoFastFood className={`text-lg  ${filter === item.name ? 'text-textColor': 'text-red-100'} group-hover:text-textColor`} />
                             </div>
                             <p className={`text-sm ${filter === item.name ? 'text-white' : 'text-textColor'} group-hover:text-red-100`}>{item.name}</p>
                         </div>
