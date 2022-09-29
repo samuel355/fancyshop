@@ -34,7 +34,7 @@ const MenuContainer = () => {
                 }
                 
             </div>
-            <div className='w-full bg-blue-400 my-5'>
+            <div className='w-full my-5 '>
                 <RowContainer flag={false} data={foodItems?.filter(foodItem => foodItem.category === filter)} />
             </div>
         </section>
