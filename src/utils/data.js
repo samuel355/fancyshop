@@ -17,11 +17,6 @@ export const categories = [
       urlParamName: "chicken",
     },
     {
-      id: 2,
-      name: "Beef",
-      urlParamName: "beef",
-    },
-    {
       id: 3,
       name: "Mutton",
       urlParamName: "mutton",
@@ -30,16 +25,6 @@ export const categories = [
       id: 4,
       name: "Fish",
       urlParamName: "fish",
-    },
-    {
-      id: 5,
-      name: "Pizza",
-      urlParamName: "pizza",
-    },
-    {
-      id: 6,
-      name: "Snack",
-      urlParamName: "snacks",
     },
     {
       id: 7,
@@ -60,11 +45,6 @@ export const categories = [
         id: 10,
         name: "Ice Creams",
         urlParamName: "ice_creams",
-    },
-    {
-        id: 11,
-        name: "Curry",
-        urlParamName: "curry",
     },
     {
       id: 12,
