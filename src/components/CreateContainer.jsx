@@ -9,7 +9,6 @@ import { getAllFoodItems, saveItem } from '../utils/firebaseFunctions'
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
 
-
 const CreateContainer = () => {
 
     const [title, setTitle] = useState("")
@@ -31,8 +30,7 @@ const CreateContainer = () => {
             })
         })
     };
-
-
+    
     const uploadImage =  (e) => {
         setIsLoading(true);
         const imageFile = e.target.files[0] //single image
@@ -47,6 +45,7 @@ const CreateContainer = () => {
         //snapshot - every single time the image is uploading
         //error - error when image uploading encounters
         //success upload
+
         uploadTask.on('state_change', (snapshot) => {
             const uploadProgress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
             console.log(uploadProgress)
