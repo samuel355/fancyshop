@@ -19,7 +19,7 @@ const CartContainer = () => {
 
             {/* Cart section */}
             <div className='w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col'>
-                <div className='w-full h-375 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none'>
+                <div className='w-full h-400 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none'>
                     {/* Cart Item */}
                     <div className='w-full p-1 px-2 rounded-lg bg-cartItem flex justify-center items-center flex-col'>
                         <div className='flex items-center justify-between gap-4'>
@@ -144,7 +144,7 @@ const CartContainer = () => {
                         <p className='text-gray-400 text-lg'>$ 46.5 </p>
                     </div>
                     <div className='w-full text-center mb-4 mt-3'>
-                        <motion.button whileTap={{scale: 0.8}} className='bg-orange-300 w-full py-3 rounded-full hover:bg-zinc-900 hover:text-white'> Proceed to Checkout</motion.button>
+                        <motion.button whileTap={{scale: 0.8}} className='bg-orange-400 w-full py-2 rounded-full hover:bg-zinc-900 hover:text-white'> Proceed to Checkout</motion.button>
                     </div>
                 </div>
             </div>
