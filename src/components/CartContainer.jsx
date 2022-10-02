@@ -8,7 +8,7 @@ import {BiPlus, BiMinus} from 'react-icons/bi'
 const CartContainer = () => {
 
     return (
-        <div className='z-[101] fixed top-[88px] w-full md:w-400 right-0 h-[90vh] bg-white drop-shadow-md flex flex-col'>
+        <div className='z-[101] fixed top-[88px] w-full md:w-400 right-0 h-[75vh] bg-white drop-shadow-md flex flex-col'>
             <div className='w-full p-4 cursor-pointer'>
                 <div className='flex items-center justify-between'>
                     <motion.p whileTap={{scale: 0.8}}> <MdOutlineKeyboardBackspace className='text-textColor text-3xl' /></motion.p>
@@ -143,8 +143,8 @@ const CartContainer = () => {
                         <p className='text-gray-400 text-xl'>Total</p>
                         <p className='text-gray-400 text-lg'>$ 46.5 </p>
                     </div>
-                    <div className='w-full mt-10 text-center'>
-                        <motion.button whileTap={{scale: 0.8}} className='bg-white w-full py-3 rounded-lg hover:bg-zinc-900 hover:text-white'> Proceed to Checkout</motion.button>
+                    <div className='w-full text-center mb-4 mt-3'>
+                        <motion.button whileTap={{scale: 0.8}} className='bg-orange-300 w-full py-3 rounded-full hover:bg-zinc-900 hover:text-white'> Proceed to Checkout</motion.button>
                     </div>
                 </div>
             </div>

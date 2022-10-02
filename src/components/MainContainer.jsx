@@ -44,7 +44,7 @@ const MainContainer = () => {
 
             <MenuContainer />
 
-            {/* <CartContainer /> */}
+            <CartContainer />
         </div>
     )
 }
