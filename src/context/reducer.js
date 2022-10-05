@@ -5,9 +5,7 @@ export const actionType = {
     SET_CART_SHOW: 'SET_CART_SHOW',
 }
 
-
 const reducer = (state, action) => {
-    console.log(action);
 
     switch(action.type){
         case actionType.SET_USER: 

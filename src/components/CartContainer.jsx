@@ -4,7 +4,6 @@ import {motion} from 'framer-motion'
 import {RiRefreshFill} from 'react-icons/ri'
 import {BiPlus, BiMinus} from 'react-icons/bi'
  
-
 const CartContainer = () => {
 
     return (
