@@ -14,7 +14,7 @@ const Header = () => {
     const firebaseAuth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    const [{user, cartShow}, dispatch] = useStateValue();
+    const [{user, cartShow, cartItems}, dispatch] = useStateValue();
 
     const [isMenu, setIsMenu] = useState(false); 
 
@@ -74,9 +74,13 @@ const Header = () => {
 
                     <motion.div onClick={showCart} whileTap={{scale: 0.8}} className='relative flex items-center justify-center cursor-pointer'>
                         <MdShoppingBasket className='text-textColor text-2xl ml-8 cursor-pointer' />
-                        <div className='w-5 h-5 -top-1 -right-1 rounded-full bg-cartNumbg absolute flex items-center justify-center'>
-                            <p className='text-xs text-white font-semibold'>2 </p>
-                        </div>
+                        {
+                            cartItems && cartItems.length > 0 && (
+                                <div className='w-5 h-5 -top-1 -right-1 rounded-full bg-cartNumbg absolute flex items-center justify-center'>
+                                    <p className='text-xs text-white font-semibold'>{cartItems.length}</p>
+                                </div>
+                            )
+                        }
                     </motion.div>
 
                     <div className='relative'>
@@ -120,9 +124,13 @@ const Header = () => {
                 <div className=' flex relative items-center gap-6'>
                     <div onClick={showCart} className='relative flex items-center justify-center'>
                         <MdShoppingBasket className='text-textColor text-2xl ml-8 cursor-pointer' />
-                        <div className='w-5 h-5 -top-1 -right-1 rounded-full bg-cartNumbg absolute flex items-center justify-center'>
-                            <p className='text-xs text-white font-semibold'>2 </p>
-                        </div>
+                        {
+                            cartItems && cartItems.length > 0 && (
+                                <div className='w-5 h-5 -top-1 -right-1 rounded-full bg-cartNumbg absolute flex items-center justify-center'>
+                                    <p className='text-xs text-white font-semibold'>{cartItems.length}</p>
+                                </div>
+                            )
+                        }
                     </div>
 
                     {
