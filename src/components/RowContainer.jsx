@@ -1,16 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { MdShoppingBasket } from 'react-icons/md'
 import {motion} from 'framer-motion'
 import { useRef } from 'react'
 import NotFound from './images/NotFound.svg'
+import { useStateValue } from '../context/StateProvider'
+import { actionType } from '../context/reducer'
 
 const RowContainer = ({flag, data, scrollValue}) => {
     
     const rowContainer = useRef()
 
+    const [items, setItems] = useState([]);
+    const [{cartItems}, dispatch] = useStateValue()
+
+    const addToCart = (item) => {
+        dispatch({
+            type: actionType.SET_CART_ITEMS,
+            cartItems: items
+        })
+        // Add cart details to LocalStorage
+        localStorage.setItem("cartItems", JSON.stringify(items))
+    }
+
     useEffect(() => {
         rowContainer.current.scrollLeft += scrollValue;
     },[scrollValue])
+
+    useEffect(() => {
+        addToCart();
+    },[items]);
 
     return (
         <div  
@@ -27,7 +45,7 @@ const RowContainer = ({flag, data, scrollValue}) => {
                             <motion.div 
                                 whileTap={{scale: 0.7}} 
                                 className='w-7 h-7 rounded-full bg-red-500 flex items-center justify-center cursor-pointer hover:shadow-md'>
-                                <MdShoppingBasket className='text-white' />
+                                <MdShoppingBasket onClick={()=> setItems([...cartItems, item])} className='text-white' />
                             </motion.div>
                         </div>
                         <div className='w-full flex flex-col items-end justify-end'>
