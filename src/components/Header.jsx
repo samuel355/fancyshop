@@ -128,12 +128,13 @@ const Header = () => {
                             onClick={login}
                         />
                     }
+
                     {
                         isMenu && (
                             <motion.div 
                                 initial={{opacity : 0, scale : 0.6}} 
                                 animate={{opacity : 1, scale : 1}}
-                                exit={{opacity : 0, scale : 0.8}}  className="flex flex-col w-60 bg-gray-50 shadow-xl rounded-lg absolute top-12 right-0 px-2 py-2">
+                                exit={{opacity : 0, scale : 0.8}} className="flex flex-col w-60 bg-gray-50 shadow-xl rounded-lg absolute top-12 right-0 px-2 py-2">
                                 {
                                     user && user.email === "samueloseiboatenglistowell57@gmail.com" && (
                                         <Link to="/createContainer">
@@ -141,7 +142,6 @@ const Header = () => {
                                         </Link>
                                     )
                                 }
-
                                 <ul
                                     className='flex flex-col '>
                                     <li className='px-4 py-2 text-base text-textColor hover:text-headingColor duration-100 hover:bg-slate-100 transition-all ease-in-out hover: cursor-pointer'>Home</li>
