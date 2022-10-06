@@ -13,7 +13,7 @@ const RowContainer = ({flag, data, scrollValue}) => {
     const [items, setItems] = useState([]);
     const [{cartItems}, dispatch] = useStateValue()
 
-    const addToCart = (item) => {
+    const addToCart = () => {
         dispatch({
             type: actionType.SET_CART_ITEMS,
             cartItems: items
