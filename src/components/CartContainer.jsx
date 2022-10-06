@@ -18,7 +18,12 @@ const CartContainer = () => {
     }
 
     return (
-        <div className='z-[101] fixed top-[88px] w-full md:w-400 right-0 h-[75vh] bg-white drop-shadow-md flex flex-col'>
+        <motion.div 
+            initial={{opacity: 0, x: 200}}
+            animate={{opacity: 1, x: 0}}
+            exit={{opacity: 0, x: 200}}
+            
+            className='z-[101] fixed top-[88px] w-full md:w-400 right-0 h-[75vh] bg-white drop-shadow-md flex flex-col'>
             <div className='w-full p-4 cursor-pointer'>
                 <div className='flex items-center justify-between'>
                     <motion.p whileTap={{scale: 0.8}} onClick={showCart}> <MdOutlineKeyboardBackspace className='text-textColor text-3xl' /></motion.p>
@@ -158,7 +163,7 @@ const CartContainer = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
