@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { MdOutlineKeyboardBackspace,} from 'react-icons/md'
 import {motion} from 'framer-motion'
 import EmptyCart from './images/emptyCart.svg'
@@ -8,14 +8,30 @@ import { actionType } from '../context/reducer'
 import CartItem from './CartItem'
  
 const CartContainer = () => {
-
-    const [{cartShow, cartItems, user}, dispatch] = useStateValue();
+    const [{cartShow, cartItems, user, total}, dispatch] = useStateValue();
+    const [tot, setTot] = useState(0);
+    const [flag, setFlag] = useState(1);
 
     const showCart = () => {
         dispatch({
             type: actionType.SET_CART_SHOW,
             cartShow: !cartShow,
         });
+    }
+
+    useEffect(() => {
+        let totalPrice = cartItems.reduce(function (accumulator, item) {
+            return accumulator + item.qty * item.price
+        }, 0)
+        setTot(totalPrice)
+    }, [tot, flag]);
+
+    const clearCart = () => {
+        dispatch({ 
+            type: actionType.SET_CART_ITEMS,
+            cartItems: [] 
+        });
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }
 
     return (
@@ -29,7 +45,7 @@ const CartContainer = () => {
                 <div className='flex items-center justify-between'>
                     <motion.p whileTap={{scale: 0.8}} onClick={showCart}> <MdOutlineKeyboardBackspace className='text-textColor text-3xl' /></motion.p>
                     <p className='text-lg font-semibold text-textColor'>Cart</p>
-                    <motion.p whileTap={{scale: 0.8}} className='flex items-center gap-2 p-1 px-2 bg-gray-100 rounded-md hover:shadow-md duration-100 ease-in-out transition-all cursor-pointer text-textColor text-base'>Clear Cart <RiRefreshFill color='red' /> </motion.p>
+                    <motion.p onClick={clearCart} whileTap={{scale: 0.8}} className='flex items-center gap-2 p-1 px-2 bg-gray-100 rounded-md hover:shadow-md duration-100 ease-in-out transition-all cursor-pointer text-textColor text-base'>Clear Cart <RiRefreshFill color='red' /> </motion.p>
                 </div>
             </div>
 
@@ -42,7 +58,7 @@ const CartContainer = () => {
 
                             {
                                 cartItems && cartItems.map((item) => (
-                                    <CartItem item={item} />
+                                    <CartItem key={item.id} item={item} flag={false} setFlag={setFlag} />
                                 ))
                             }
 
@@ -52,7 +68,7 @@ const CartContainer = () => {
                         <div className='w-full flex-1 bg-cartTotal rounded-t-[2rem] flex flex-col items-center px-8'>
                             <div className='w-full flex items-center justify-between mt-24'>
                                 <p className='text-gray-400 text-lg'>Sub Total</p>
-                                <p className='text-gray-400 text-lg'>$ 44.5</p>
+                                <p className='text-gray-400 text-lg'>$ {tot - 2}</p>
                             </div>
                             <div className='w-full flex items-center justify-between mt-5'>
                                 <p className='text-gray-400 text-lg'>Delivery</p>
@@ -63,7 +79,7 @@ const CartContainer = () => {
 
                             <div className='w-full flex items-center justify-between mt-10'>
                                 <p className='text-gray-400 text-xl'>Total</p>
-                                <p className='text-gray-400 text-lg'>$ 46.5 </p>
+                                <p className='text-gray-400 text-lg'>$ {tot + 2} </p>
                             </div>
                             {
                                 user ? (
@@ -81,7 +97,7 @@ const CartContainer = () => {
                 ) : (
                     <div className='w-full h-full flex flex-col items-center justify-center gap-6'>
                         <img src={EmptyCart} className="w-300" alt="" />
-                        <p className='text-xl text-textColor font-semibold'>Add Som Items to your cart</p>
+                        <p className='text-xl text-textColor font-semibold'>Add Some Items to your cart</p>
                     </div>
                 )
             }

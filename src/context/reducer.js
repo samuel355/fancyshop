@@ -3,6 +3,7 @@ export const actionType = {
     SET_FOOD_ITEMS: 'SET_FOOD_ITEMS',
     SET_CART_ITEMS: 'SET_CART_ITEMS',
     SET_CART_SHOW: 'SET_CART_SHOW',
+    SET_TOTAL : 'SET_TOTAL',
 }
 
 const reducer = (state, action) => {
@@ -31,6 +32,11 @@ const reducer = (state, action) => {
                 ...state,
                 cartShow : action.cartShow, 
             }
+        case actionType.SET_TOTAL:
+            return {
+                ...state,
+                total: state.cartItems.map((item) => item.price),
+            };
         
         default: 
             return state;
